@@ -16,11 +16,11 @@ public class LaunchingChrome {
         // Print a Log In message to the screen
         System.out.println("Successfully opened the website www.Store.Demoqa.com in Chrome");
         
-        
         driver.findElement(By.name("firstname")).sendKeys("Bob Jones");
         
         //IsDisplayed Command
-        driver.findElement(By.xpath("//input[@name='firstname']")).isDisplayed();
+        boolean displayed = driver.findElement(By.xpath("//input[@name='firstname']")).isDisplayed();
+        System.out.println("firstname displayed: " + displayed);
         
         //IsEnabled Command
         WebElement element = driver.findElement(By.name("lastname"));
@@ -29,19 +29,20 @@ public class LaunchingChrome {
         if(status1){
             element.sendKeys("ToolsQA");
         }
+        System.out.println("lastname enabled: " + status1);
         
         //IsSelected Command
-        driver.findElement(By.id("exp-0")).isSelected();
-        
+        boolean selected = driver.findElement(By.id("exp-0")).isSelected();
+        System.out.println("Exp selected: " + selected);
+
         //getAttribute Command
         WebElement submitName = driver.findElement(By.id("submit"));
 	submitName.getAttribute("id"); //This will return "SubmitButton"
-
+        
         //Submit Command
         driver.findElement(By.xpath("//button[@id='submit']")).click();
        
-        
-	//Wait for 5 Sec
+        //Wait for 2 Sec
 	Thread.sleep(2);
 		
         // Close the driver
